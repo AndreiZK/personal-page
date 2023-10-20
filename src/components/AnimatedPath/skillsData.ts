@@ -23,6 +23,7 @@ export const skillsData = (isMobile: boolean) => [
     top: isMobile ? "290px" : "550px",
     left: isMobile ? "160px" : "400px",
     fontSize: isMobile ? "5em" : "8em",
+    fromRight: true,
   },
   {
     name: "Redux",
@@ -35,13 +36,13 @@ export const skillsData = (isMobile: boolean) => [
     top: isMobile ? "350px" : "200px",
     left: isMobile ? "0px" : "-350px",
     fontSize: isMobile ? "2.5em" : "3em",
-    fromRight: true,
   },
   {
     name: "Express",
     top: isMobile ? "460px" : "900px",
     left: isMobile ? "190px" : "700px",
     fontSize: isMobile ? "2.3em" : "4em",
+    fromRight: true,
   },
   {
     name: "Sass",
@@ -61,13 +62,13 @@ export const skillsData = (isMobile: boolean) => [
     top: isMobile ? "525px" : "1320px",
     left: isMobile ? "200px" : "650px",
     fontSize: isMobile ? "4em" : "7em",
+    fromRight: true,
   },
   {
     name: "TypeScript",
     top: isMobile ? "700px" : "570px",
     left: isMobile ? "30px" : "-400px",
     fontSize: isMobile ? "3.5em" : "4em",
-    fromRight: true,
   },
   {
     name: "Vite",
@@ -87,6 +88,5 @@ export const skillsData = (isMobile: boolean) => [
     top: isMobile ? "5px" : "1300px",
     left: isMobile ? "110px" : "-350px",
     fontSize: isMobile ? "2.4em" : "4em",
-    fromRight: true,
   },
 ];
