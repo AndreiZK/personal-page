@@ -5,10 +5,11 @@
   },
   "skills": {
     "resp": "Responsive layout",
-    "final": "Job well-done"
+    "final": "Quality product"
   },
   "experience": "My working <0>experience</0>",
   "contacts-heading": "Contact me!",
   "contacts-text": "Send me a message on any of these platforms or just leave a message here",
-  "send": "Send"
+  "send": "Send",
+  "github": "My GitHub"
 }

@@ -3,13 +3,16 @@ import { useSpring, animated } from "@react-spring/web";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
-import AnimatedPath from "./components/AnimatedPath";
+import AnimatedPath from "./components/AnimatedPath/index";
 import Typewriter from "./components/Typewriter";
 import ExperienceSection from "./components/Experience";
 import Contacts from "./components/Contacts";
+import useIsMobile from "./hooks/useIsMobile";
 
 function App() {
   const { t } = useTranslation();
+
+  const isMobile = useIsMobile();
 
   const currentLanguage = i18next.language;
   console.log(currentLanguage);
@@ -49,6 +52,13 @@ function App() {
     color: theme === "dark" ? "white" : "#226fb5",
   });
 
+  const gitHubLinkSpring = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    delay: 3000,
+    config: { duration: 1500 },
+  });
+
   const switchTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
@@ -65,15 +75,23 @@ function App() {
         src="/hero-photo.png"
       />
       <Typewriter
-        style={{ marginBottom: "15px" }}
+        style={{ marginBlock: "15px" }}
         text={t("hero-typewriter.first")}
-        fontSize="3em"
+        fontSize={isMobile ? "1.8rem" : "3em"}
       />
       <Typewriter
         delay={3}
         text={t("hero-typewriter.second")}
-        fontSize="2.5em"
+        fontSize={isMobile ? "1.6rem" : "2.5em"}
       />
+      <animated.a
+        target="blank"
+        href="https://github.com/AndreiZK?tab=repositories"
+        className="github-link"
+        style={gitHubLinkSpring}
+      >
+        {t("github")} <i className="fa-brands fa-github"></i>
+      </animated.a>
       <div className="theme-switch">
         <label className="theme-switch-label">
           <input

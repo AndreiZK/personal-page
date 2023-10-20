@@ -18,30 +18,17 @@ const cases = [
     ],
   },
   {
-    title: "Ritzip",
-    img: "/Screenshot_1.png",
+    title: "РеабИТ",
+    img: "/reabit-pic.png",
     description:
-      "Панель управления платформой для грузоперевозок. Включает в себя много сложных форм и отображение данных водителей и заказов на карте в реальном времени.",
-    stack: [
-      "React",
-      "Typescript",
-      "Google Maps API",
-      "websocket",
-      "React Router",
-    ],
+      "Панель управления медицинского сервиса. Отображение большого количества разного рода медицинских данных, работа с формами и API.",
+    stack: ["React", "Typescript", "RTK-query", "React Router"],
   },
   {
-    title: "Ritzip",
-    img: "/Screenshot_1.png",
-    description:
-      "Панель управления платформой для грузоперевозок. Включает в себя много сложных форм и отображение данных водителей и заказов на карте в реальном времени.",
-    stack: [
-      "React",
-      "Typescript",
-      "Google Maps API",
-      "websocket",
-      "React Router",
-    ],
+    title: "CSMarket",
+    img: "/csmarket-pic.png",
+    description: "Торговая площадка для скинов в CS",
+    stack: ["Laravel", "Sass"],
   },
 ];
 

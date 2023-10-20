@@ -1,4 +1,5 @@
 import { animated, useInView, useSpring } from "react-spring";
+import useIsMobile from "../../hooks/useIsMobile";
 
 interface ExperienceCardProps {
   index: number;
@@ -21,9 +22,12 @@ const ExperienceCard = ({
   stack,
   title,
 }: ExperienceCardProps) => {
-  console.log(index);
+  const isMobile = useIsMobile();
   const wrapperSpring = useSpring({
     maxWidth: isExpanded ? "1200px" : isOtherExpanded ? "200px" : "500px",
+  });
+  const wrapperSpringMobile = useSpring({
+    maxHeight: isExpanded ? "800px" : isOtherExpanded ? "200px" : "400px",
   });
 
   const wrapperAnimation = {
@@ -35,9 +39,15 @@ const ExperienceCard = ({
   const [wrapperRef, wrapperComeupSpring] = useInView(() => wrapperAnimation, {
     rootMargin: `0% 0% -10% 0%`,
   });
+
   const stackSectionSpring = useSpring({
     transform: isExpanded ? "translateX(0%)" : "translateX(100%)",
     maxWidth: isExpanded ? "250px" : "0px",
+    opacity: isExpanded ? 1 : 0,
+  });
+  const stackSectionSpringMobile = useSpring({
+    transform: isExpanded ? "translateY(0%)" : "translateY(100%)",
+    maxHeight: isExpanded ? "200px" : "0px",
     opacity: isExpanded ? 1 : 0,
   });
   const descriptionSectionSpring = useSpring({
@@ -45,14 +55,24 @@ const ExperienceCard = ({
     maxWidth: isExpanded ? "400px" : "0px",
     opacity: isExpanded ? 1 : 0,
   });
+  const descriptionSectionSpringMobile = useSpring({
+    transform: isExpanded ? "translateY(0%)" : "translateY(-100%)",
+    maxHeight: isExpanded ? "200px" : "0px",
+    opacity: isExpanded ? 1 : 0,
+  });
+
+  const wrapperSpringToUse = isMobile ? wrapperSpringMobile : wrapperSpring;
 
   return (
     <animated.div
       ref={wrapperRef}
-      style={{ ...wrapperComeupSpring, ...wrapperSpring }}
+      style={{ ...wrapperComeupSpring, ...wrapperSpringToUse }}
       className="card-wrapper"
     >
-      <animated.div style={stackSectionSpring} className="card-stack">
+      <animated.div
+        style={isMobile ? stackSectionSpringMobile : stackSectionSpring}
+        className="card-stack"
+      >
         <h5>Стек проекта</h5>
         <ul>
           {stack.map((item) => (
@@ -68,7 +88,9 @@ const ExperienceCard = ({
         ></div>
       </div>
       <animated.div
-        style={descriptionSectionSpring}
+        style={
+          isMobile ? descriptionSectionSpringMobile : descriptionSectionSpring
+        }
         className="card-description-container"
       >
         <h5>Описание</h5>
