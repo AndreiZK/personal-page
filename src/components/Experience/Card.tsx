@@ -1,5 +1,5 @@
 import { animated, useInView, useSpring } from "react-spring";
-import useIsMobile from "../../hooks/useIsMobile";
+import useGetRes from "../../hooks/useGetRes";
 
 interface ExperienceCardProps {
   index: number;
@@ -22,7 +22,7 @@ const ExperienceCard = ({
   stack,
   title,
 }: ExperienceCardProps) => {
-  const isMobile = useIsMobile();
+  const res = useGetRes();
   const wrapperSpring = useSpring({
     maxWidth: isExpanded ? "1200px" : isOtherExpanded ? "200px" : "500px",
   });
@@ -61,7 +61,7 @@ const ExperienceCard = ({
     opacity: isExpanded ? 1 : 0,
   });
 
-  const wrapperSpringToUse = isMobile ? wrapperSpringMobile : wrapperSpring;
+  const wrapperSpringToUse = res === "sm" ? wrapperSpringMobile : wrapperSpring;
 
   return (
     <animated.div
@@ -70,7 +70,7 @@ const ExperienceCard = ({
       className="card-wrapper"
     >
       <animated.div
-        style={isMobile ? stackSectionSpringMobile : stackSectionSpring}
+        style={res === "sm" ? stackSectionSpringMobile : stackSectionSpring}
         className="card-stack"
       >
         <h5>Стек проекта</h5>
@@ -89,7 +89,9 @@ const ExperienceCard = ({
       </div>
       <animated.div
         style={
-          isMobile ? descriptionSectionSpringMobile : descriptionSectionSpring
+          res === "sm"
+            ? descriptionSectionSpringMobile
+            : descriptionSectionSpring
         }
         className="card-description-container"
       >

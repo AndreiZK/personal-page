@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 const contactLinks = [
   {
@@ -40,8 +41,12 @@ const Contacts = () => {
       .then((data) => {
         setText("");
         console.log(data);
+        toast("Sent successfully");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast("Failed to send the message");
+      });
   };
 
   return (

@@ -7,15 +7,15 @@ import AnimatedPath from "./components/AnimatedPath/index";
 import Typewriter from "./components/Typewriter";
 import ExperienceSection from "./components/Experience";
 import Contacts from "./components/Contacts";
-import useIsMobile from "./hooks/useIsMobile";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { t } = useTranslation();
 
-  const isMobile = useIsMobile();
+  const isMobile = window.innerWidth < 768;
 
   const currentLanguage = i18next.language;
-  console.log(currentLanguage);
   const [language, setLanguage] = useState(currentLanguage);
 
   const changeLanguage = () => {
@@ -139,6 +139,7 @@ function App() {
       <AnimatedPath />
       <ExperienceSection />
       <Contacts />
+      <ToastContainer />
     </div>
   );
 }

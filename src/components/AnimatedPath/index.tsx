@@ -7,7 +7,6 @@ import {
   config,
 } from "@react-spring/web";
 import { useTranslation } from "react-i18next";
-import useIsMobile from "../../hooks/useIsMobile";
 import { skillsData } from "./skillsData";
 import Skill from "./Skill";
 
@@ -17,7 +16,7 @@ const AnimatedPath = () => {
   const pathRef = useRef<SVGPathElement | null>(null);
   const pathContainerRef = useRef<HTMLDivElement>(null!);
 
-  const isMobile = useIsMobile();
+  const isMobile = window.innerWidth < 768;
 
   const [pathSpring, api] = useSpring(() => ({
     from: { strokeDashoffset: 2140, strokeDasharray: 2140 },
